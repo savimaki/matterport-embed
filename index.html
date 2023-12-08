@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matterport URL Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mainbox">
+        <div class="convert">
+            <h2>Matterport URL Converter</h2>
+            <p>Enter a Matterport URL starting with "https://my.matterport.com/show/".</p>
+    
+            <input type="text" id="inputUrl" placeholder="Enter Matterport URL">
+            <button onclick="convertUrl()">Convert</button>
+
+            <div id="output"></div>   
+        </div>
+        <hr>
+        <div class="export">
+            <h2>Export HTML</h2>
+            <label for="siteTitle">Site Title:</label>
+            <input type="text" id="siteTitle" placeholder="Enter Site Title">
+
+            <label for="fileName">File Name:</label>
+            <input type="text" id="fileName" placeholder="Enter File Name (default: popup.html)" value="popup.html">
+
+            <button onclick="exportHtml()">Export HTML</button>    
+        </div>
+
+
+
+    </div>
+
+
+
+    
+    <script>
+        function convertUrl() {
+            var inputUrl = document.getElementById("inputUrl").value.trim();
+
+            // Check if the input URL is valid
+            if (!inputUrl.startsWith("https://my.matterport.com/show/")) {
+                alert("Invalid Matterport URL. Please enter a valid URL.");
+                return;
+            }
+
+            // Extract the part after "?m="
+            var match = inputUrl.match(/\?m=(.*)/);
+            if (match) {
+                var matterportId = match[1];
+                var convertedUrl = "https://my.matterport.com/show/?m=" + matterportId +
+                    "&play=1&qs=1&brand=0&mls=2&mt=0&search=0&vr=0";
+
+                // Display the converted URL
+                document.getElementById("output").innerHTML =
+                    "<p>Converted URL:</p><a href='" + convertedUrl + "' target='_blank'>" + convertedUrl + "</a>";
+            } else {
+                alert("Invalid Matterport URL. Please enter a valid URL.");
+            }
+        }
+
+        function exportHtml() {
+            var siteTitle = document.getElementById("siteTitle").value.trim();
+            var fileName = document.getElementById("fileName").value.trim() || "popup.html";
+            var convertedUrl = document.getElementById("output").querySelector("a");
+
+            // Check if a Matterport URL has been converted
+            if (!convertedUrl) {
+                alert("Please convert a Matterport URL first.");
+                return;
+            }
+
+            // Check if a site title is provided
+            if (!siteTitle) {
+                alert("Please enter a Site Title.");
+                return;
+            }
+
+            // Extract the Matterport ID
+            var match = convertedUrl.href.match(/\/show\/\?m=(.*)/);
+            var matterportId = match ? match[1] : '';
+
+            // Generate the HTML content
+            var htmlContent = `<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${siteTitle}</title>
+    <link rel="icon" type="image/x-icon" href="https://keyframe.fi/wp-content/uploads/2023/08/cropped-fav-32x32.png">
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe style="border: none;" width='100%' height='100%' src='${convertedUrl.href}' frameborder='0' allowfullscreen allow='xr-spatial-tracking' ></iframe>
+</body>
+</html>`;
+
+            // Create a Blob and download the HTML file
+            var blob = new Blob([htmlContent], { type: 'text/html' });
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+        }
+    </script>
+</body>
+</html>
