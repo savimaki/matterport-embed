@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225.35 41.17">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: IBMPlexSans-Bold, 'IBM Plex Sans';
+        font-size: 34.62px;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        fill: #c00033;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        fill: #f78;
+      }
+
+      .cls-6 {
+        fill: #ff3158;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-6" d="m5.13,0l12.82,3.59L30.77,0l5.13,1.44v33.06l-5.13,1.44-12.82-3.59-12.82,3.58L0,34.49V1.44L5.13,0Zm5.12,24.67l7.69-2.15,7.69,2.15v-13.4l-7.69,2.15-7.69-2.15v13.4Z"/>
+      <g>
+        <polygon class="cls-4" points="17.94 6.46 17.94 13.42 30.76 9.83 30.76 35.93 35.88 34.5 35.88 1.44 17.94 6.46"/>
+        <polygon class="cls-4" points="10.25 27.54 17.94 25.38 17.94 32.34 5.13 35.93 5.13 9.83 10.25 11.27 10.25 27.54"/>
+      </g>
+      <g>
+        <polygon class="cls-5" points="5.13 0 0 1.44 17.94 6.46 35.88 1.44 30.76 0 17.94 3.59 5.13 0"/>
+        <polygon class="cls-5" points="17.94 22.51 10.25 24.67 10.25 27.54 17.94 25.38 25.63 27.54 25.63 24.67 17.94 22.51"/>
+      </g>
+    </g>
+    <text class="cls-2" transform="translate(43.89 31.65)"><tspan x="0" y="0">Embedpo</tspan><tspan class="cls-1" x="154.08" y="0">r</tspan><tspan class="cls-3" x="168.21" y="0">t</tspan></text>
+  </g>
+</svg>
